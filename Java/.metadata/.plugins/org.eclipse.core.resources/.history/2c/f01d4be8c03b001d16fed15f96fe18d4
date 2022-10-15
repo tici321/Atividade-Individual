@@ -1,0 +1,42 @@
+package Aplicacao;
+
+import DAO.ViagemDAO;
+import modelo.Viagem;
+
+public class MainViagem {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Viagem viagem=new Viagem();
+		
+		viagem.setIda("2009/12/12");
+		viagem.setVolta(null);
+		viagem.setValor(3000);
+		viagem.setDescricao("Macchu Picchu");
+		
+		ViagemDAO viagemDao=new ViagemDAO();
+		viagemDao.save(viagem);
+		
+		//att
+		
+		Viagem v1=new Viagem();
+		v1.setIda("2004/05/05");
+		v1.setVolta("2006/06/06");
+		v1.setId(2);
+	
+		v1.setValor(5000);
+		v1.setDescricao("ilhas maldivas");
+	
+		
+		//viagemDao.update(v1);
+		
+		//delete
+		//clienteDao.deleteByIdViagem(2);
+		
+		
+		for(Viagem v:viagemDao.getViagem()) {
+			System.out.println("Viagem: " +v.getDescricao());
+		}
+	}
+
+}

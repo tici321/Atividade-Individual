@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu CRUD em NodeJS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+  </script>
+
+  <style>
+    body{
+        background-color:  rgb(104, 178, 218)
+    }
+  
+    table{
+        background-color: rgb(237, 228, 160);
+        padding: 3px;
+       height:auto;
+    }
+  
+  h1{
+    background-color: azure;
+  }
+  .dv{
+        background-color: rgb(237, 228, 160);
+        padding: 3px;
+  }
+ 
+
+  </style>
+
+</head>
+<body>
+    <div class="container p-3 my-3">
+     <h1 class="my-5">Registrar</h1> 
+
+   
+    <form action="/show" method="POST">
+
+        <table class="table">
+            <thead>
+                <tr>
+                  <td><h3>Nome</h3></td>
+                  <td><h3>CPF</h3></td>
+                  <td><h3>Email</h3></td>
+                  <td><h3>Senha</h3></td>
+                  <td><h3>Usuario</h3></td>
+                </tr>
+              </thead>
+
+
+       <tr>
+       <td><input type="text" placeholder="Nome" name="Nome"> </td>
+      
+        
+       
+        <td> <input type="text" placeholder="CPF" name="CPF"></td>
+     
+        
+       
+        <td><input type="text" placeholder="Email" name="Email"></td>
+       
+
+       
+        <td><input type="password" placeholder="Senha" name="Senha"></td>
+      
+
+        <td><input type="text" placeholder="Usuario" name="Usuario"></td>
+      
+
+       
+         </table>
+         <div class="dv">
+       <button type="submit" class="btn btn-success"> Registrar </button>
+       <a href="/show"><button type="button" class="btn btn-info">Todos</button></a></button>
+
+    </form>
+    </div>
+</body>
+
+
+
+</html>

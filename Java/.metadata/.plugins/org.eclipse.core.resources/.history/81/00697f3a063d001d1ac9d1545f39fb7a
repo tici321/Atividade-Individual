@@ -1,0 +1,88 @@
+package modelo;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+
+public class Pedido {
+	private int id;
+	private Date ida;
+	private Date volta;
+	private double total;
+	private Cliente cliente;
+	
+	private ArrayList<ItemPedido> itens = new ArrayList<ItemPedido>();
+	
+	//construtores
+	
+		public Pedido(int id, Date ida, Date volta, double Valor) {
+		this.id=id;
+		this.ida=ida;
+		this.volta=volta;
+		
+		
+		
+		
+		//gets e sets
+	}
+		public double getTotal() {
+			return total;
+		}
+		public void setTotal(double total) {
+			this.total = total;
+		}
+		public Pedido() {
+			// TODO Auto-generated constructor stub
+		}
+		public int getId() {
+			return id;
+		}
+		public void setId(int id) {
+			this.id = id;
+		}
+		public Date getIda() {
+			return ida;
+		}
+		public void setIda(Date ida) {
+			this.ida = ida;
+		}
+		public Date getVolta() {
+			return volta;
+		}
+		public void setVolta(Date volta) {
+			this.volta = volta;
+		}
+		
+		
+		public Cliente getCliente() {
+			return cliente;
+		}
+		public void setCliente(Cliente cliente) {
+			this.cliente = cliente;
+
+		}
+		
+		public void AdicionarItem(ItemPedido item) {
+			itens.add(item);
+		}
+		public void RemoveItem(ItemPedido item) {
+			itens.remove(item);
+		}
+		
+		public ArrayList<ItemPedido> getItens () {
+			return itens;
+		}
+		
+		public void calcularPedido() {
+			for (ItemPedido item:itens) {
+				this.total+=item.getValor();
+			}
+		}
+		public void mostrarPedido() {
+			for(ItemPedido item:itens) {
+				System.out.println("Id: " +item.getId() + "QTD: " +item.getQuantidade()+"Valor: " +item.getValor());;
+			}
+		}
+}
+
+	

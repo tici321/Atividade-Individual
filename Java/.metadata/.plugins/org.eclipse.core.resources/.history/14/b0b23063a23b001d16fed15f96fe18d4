@@ -1,0 +1,35 @@
+package Aplicacao;
+
+import DAO.ClienteDAO;
+import modelo.Cliente;
+
+public class MainCliente {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Cliente cliente=new Cliente();
+		cliente.setNome("Alice");
+		cliente.setEndereco("Rua dos Alfeneiros, numero 4. Rio de Janeiro, Brasil");
+		
+		ClienteDAO clienteDao=new ClienteDAO();
+		//agenciaDao.save(cliente);
+		
+		//att
+		
+		Cliente c1=new Cliente();
+		c1.setNome("Alices Travel");
+		c1.setId(1);
+		c1.setEndereco("Wonderland, 666");
+		
+		//agenciaDao.update(a1);
+		
+		//delete
+		clienteDao.deleteByIdCliente(2);
+		
+		
+		for(Cliente c:clienteDao.getCliente()) {
+			System.out.println("Cliente: " +c.getNome());
+		}
+	}
+
+}

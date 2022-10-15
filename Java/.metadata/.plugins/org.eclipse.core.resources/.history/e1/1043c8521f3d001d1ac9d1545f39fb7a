@@ -1,0 +1,49 @@
+package Aplicacao;
+
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import DAO.ViagemDAO;
+import modelo.Viagem;
+
+public class MainViagem {
+
+	public static void main(String[] args) throws ParseException  {
+		// TODO Auto-generated method stub
+		Viagem viagem=new Viagem();
+		
+		
+		SimpleDateFormat sdf= new SimpleDateFormat("dd/MM/yyyy");
+		
+		viagem.setIda(sdf.parse("30/10/2024"));
+		viagem.setVolta(sdf.parse("06/17/2026"));
+		viagem.setValor(5040.59);
+		viagem.setDestino("Bogota");
+		
+		ViagemDAO viagemDao=new ViagemDAO();
+		viagemDao.save(viagem);
+		
+		//att
+		
+		Viagem v1=new Viagem();
+		v1.setIda(sdf.parse("25/10/2022"));
+		v1.setVolta(sdf.parse("01/12/2025"));
+		v1.setId(2);
+	
+		v1.setValor(5000.50);
+		v1.setDestino("Cancun");
+	
+		
+		//viagemDao.update(v1);
+		
+		//delete
+		//viagemDao.deleteByIdViagen(3);
+		
+		
+		for(Viagem v:viagemDao.getViagem()) {
+			System.out.println("Viagem: " +v.getDestino());
+		}
+	}
+
+}

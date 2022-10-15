@@ -1,0 +1,56 @@
+package modelo;
+
+public class ItemPedido {
+
+	private int id;
+	private int quantidade;
+	private double valor;
+	private Viagem viagem;
+	
+	public ItemPedido(int id, int quantidade, double valor, Viagem viagem) {
+		
+		this.id=id;
+		this.quantidade=quantidade;
+		this.valor=valor;
+		this.viagem=viagem;
+	}
+	
+	public ItemPedido() {
+}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
+	public Viagem getViagem() {
+		return viagem;
+	}
+
+	public void setViagem(Viagem viagem) {
+		this.viagem = viagem;
+	}
+	
+	public void calcularItem() {
+	
+	}
+}

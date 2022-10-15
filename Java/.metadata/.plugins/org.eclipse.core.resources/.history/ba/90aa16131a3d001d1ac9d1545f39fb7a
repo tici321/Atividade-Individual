@@ -1,0 +1,49 @@
+package Aplicacao;
+
+
+import java.util.Date;
+
+//import java.text.SimpleDateFormat;
+import DAO.ViagemDAO;
+import modelo.Viagem;
+
+public class MainViagem {
+
+	public static void main(String[] args)  {
+		// TODO Auto-generated method stub
+		Viagem viagem=new Viagem();
+		
+		
+		//SimpleDateFormat Ida= new SimpleDateFormat("dd/MM/yyyy");
+		
+		viagem.setIda(new Date());
+		viagem.setVolta(new Date());
+		viagem.setValor(5000.76);
+		viagem.setDestino("Cancun");
+		
+		ViagemDAO viagemDao=new ViagemDAO();
+		//viagemDao.save(viagem);
+		
+		//att
+		
+		Viagem v1=new Viagem();
+		v1.setIda(null);
+		v1.setVolta(null);
+		v1.setId(2);
+	
+		v1.setValor(5000.50);
+		v1.setDestino("Cancun");
+	
+		
+		//viagemDao.update(v1);
+		
+		//delete
+		//viagemDao.deleteByIdViagen(3);
+		
+		
+		for(Viagem v:viagemDao.getViagem()) {
+			System.out.println("Viagem: " +v.getDestino());
+		}
+	}
+
+}

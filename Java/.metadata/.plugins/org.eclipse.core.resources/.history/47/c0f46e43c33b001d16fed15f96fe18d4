@@ -1,0 +1,171 @@
+package DAO;
+
+
+import java.sql.Connection;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import Conexao.ConnectionFactory;
+
+import modelo.Viagem;
+
+	//C
+	public class ViagemDAO {
+		public void save(Viagem viagem) {
+			String sql="INSERT INTO Viagem(DataIda, DataVolta, IdViagem, Valor, Descricao)" + 
+		"VALUES (?,?,?,?,?)";
+			
+			Connection conn=null;
+			PreparedStatement pstm=null;
+			
+			try {
+				conn=ConnectionFactory.creatConnectiontoMySQL();
+				
+				pstm=(PreparedStatement) conn.prepareStatement(sql);
+				pstm.setString(1, viagem.getIda());
+				pstm.setString(2,  viagem.getVolta());
+				pstm.setInt(3, viagem.getId());
+				pstm.setDouble(4, viagem.getValor());
+				pstm.setString(5, viagem.getDescricao());
+				
+				pstm.execute();
+				
+				System.out.println("Salvo com sucesso");
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try{
+					if(pstm!=null) {
+						pstm.close();
+				}
+					if(conn!=null) {
+						conn.close();
+					}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			}
+		}
+	
+	//U
+		public void update(Viagem viagem) {
+			String sql="UPDATE viagem SET DataIda =?, DataVolta=?, Valor=?, Descricao=?"+
+		"WHERE IdViagem=?";
+			
+			Connection conn=null;
+			PreparedStatement pstm=null;
+			try {
+				conn=ConnectionFactory.creatConnectiontoMySQL();
+				pstm=(PreparedStatement) conn.prepareStatement(sql);
+				
+				pstm.setString(1,  viagem.getIda());
+				pstm.setString(2,  viagem.getVolta());
+				pstm.setInt(3, viagem.getId());
+				pstm.setDouble(4, viagem.getValor());
+				pstm.setString(5, viagem.getDescricao());
+				
+			
+				
+				pstm.execute();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(pstm!=null) {
+						pstm.close();
+					}
+					if(conn!=null) {
+						conn.close();
+					}
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	//D
+		public void deleteByIdViagen(int IdViagem) {
+			String sql="DELETE FROM viagem WHERE IdViagem=?";
+			Connection conn=null;
+			PreparedStatement pstm=null;
+			try {
+				conn= ConnectionFactory.creatConnectiontoMySQL();
+				pstm= (PreparedStatement) conn.prepareStatement(sql);
+				
+				pstm.setInt(1, IdViagem);
+				
+				pstm.execute();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(pstm!=null) {
+						pstm.close();
+					}
+				 if(conn!=null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		}
+		
+	//R
+	public List<Viagem> getViagem(){
+		String sql="SELECT * FROM viagem";
+		List<Viagem> viagens = new ArrayList<Viagem>();
+		Connection conn=null;
+		PreparedStatement pstm = null;
+		
+		ResultSet rset=null;
+		
+		try {
+			conn=ConnectionFactory.creatConnectiontoMySQL();
+			
+			pstm=(PreparedStatement) conn.prepareStatement(sql);
+			
+			rset=pstm.executeQuery();
+			
+			while(rset.next()) {
+				Viagem viagem=new Viagem();
+				
+				
+				viagem.setIda(rset.getString("DataIda"));
+				viagem.setVolta(rset.getString("DataVolta"));
+				viagem.setId(rset.getInt("IdViagem"));
+				viagem.setValor(rset.getDouble("Valor"));
+				viagem.setDescricao(rset.getString("Descricao"));
+			
+			
+				viagens.add(viagem);
+			}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					
+					try {
+					if(rset!=null) {
+						rset.close();
+					}
+				 if(pstm!=null) {
+					pstm.close();
+				}
+			if(conn!=null) {
+				conn.close();
+			}
+		}	catch(Exception e) {
+			e.printStackTrace();
+			}
+		}
+		
+		return viagens;
+		
+		
+		}
+	}
+	
